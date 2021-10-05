@@ -1,0 +1,43 @@
+.nav {
+  .nav-top {
+    margin: 24px 0;
+  }
+
+  .nav-bot {
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .not-home-bot {
+    transform: translateY(-100%);
+  }
+
+  .not-home-soc {
+    transform: translateY(-500%);
+  }
+
+  &__logo {
+    display: block;
+    width: 25%;
+
+    & > h3 {
+      margin-left: 20px;
+    }
+  }
+
+  &__soc {
+    transition: transform 0.5s ease-in-out;
+
+    & > a:not(:first-child) {
+      margin-left: 30px;
+    }
+  }
+
+  &__opt {
+    width: 25%;
+    justify-content: right;
+
+    & > div:not(:first-child) {
+      margin-left: 15px;
+    }
+  }
+}

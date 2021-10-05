@@ -1,0 +1,157 @@
+@import "./varibles.style";
+@import "./mixins.style";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $color-black;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $color-white;
+}
+
+// --------------------------------------------------------------- //
+// --------------------------- HELPER ---------------------------- //
+// --------------------------------------------------------------- //
+
+.container {
+  max-width: 1366px;
+  padding: 0 113px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hide-on-desktop {
+  @include bp-desktop-only {
+    display: none !important;
+  }
+}
+
+.hide-on-mobile {
+  @include bp-tablet {
+    display: none !important;
+  }
+}
+
+// FLEX
+.flex {
+  display: flex;
+
+  &-fw-w {
+    flex-wrap: wrap;
+  }
+
+  &-fd-c {
+    flex-direction: column;
+  }
+}
+
+// ALIGN HELPERS
+.ai {
+  &-c {
+    align-items: center;
+  }
+}
+
+.jc {
+  &-c {
+    justify-content: center;
+  }
+
+  &-sb {
+    justify-content: space-between;
+  }
+
+  &-se {
+    justify-content: space-evenly;
+  }
+}
+
+// --------------------------------------------------------------- //
+// ---------------------------- TEXT ----------------------------- //
+// --------------------------------------------------------------- //
+
+// headlines
+h1,
+h2,
+h3 {
+  font-family: $font-head;
+  font-weight: 400;
+}
+
+h1,
+h2 {
+  letter-spacing: 0.4px;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 24px;
+  letter-spacing: 0px;
+}
+
+// body text
+h4,
+p {
+  font-family: $font-body;
+  letter-spacing: 0px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+p {
+  // body
+  font-size: 14px;
+}
+
+.font-subtitle-regular {
+  font-size: 16px;
+}
+
+.font-subtitle-bold {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.font-caption {
+  font-size: 12px;
+}
+
+.font-overline {
+  font-size: 10px;
+}
+
+// link
+a {
+  text-decoration: none;
+}
+
+// FONT COLOR
+.font-color {
+  &-reverse {
+    color: $color-white;
+  }
+}

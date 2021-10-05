@@ -1,0 +1,59 @@
+@import "../../../assets/styles/varibles.style";
+
+.btn-menu {
+  cursor: pointer;
+  position: relative;
+
+  margin: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+
+  transition: margin-bottom 0.5s ease-in-out;
+
+  & > h3 {
+    transition: opacity 0.25s ease-in-out;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    width: max-content;
+    height: max-content;
+    padding: 5px;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  &__act-1 {
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 2px;
+    height: 20px;
+
+    background-color: $color-black;
+
+    transition: height 0.5s ease-in-out;
+  }
+}
+
+// transition helper class
+.not-home {
+  margin-bottom: 10px;
+
+  .btn-menu__act-1 {
+    height: 0px;
+  }
+}

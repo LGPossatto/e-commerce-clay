@@ -1,0 +1,14 @@
+.btn-search {
+  cursor: pointer;
+  padding: 5px;
+
+  transition: opacity 0.25s ease-in-out;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}
