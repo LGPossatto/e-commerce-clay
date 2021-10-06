@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import "./navBar.style.scss";
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
@@ -13,18 +13,29 @@ import { ReactComponent as Cart } from "../../assets/icons/cart_icn.svg";
 import BtnLink from "../btn/btn-link/BtnLink.component";
 import BtnSearch from "../btn/btn-search/BtnSearch.component";
 import BtnMenu from "../btn/btn-menu/BtnMenu.component";
+import BtnDropdown from "../btn/btn-dropdown/BtnDropdown.component";
 
 const NavBar = () => {
   const [isHome, setIsHome] = useState(true);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const path = pathname.split("/")[1];
+
+    if (["Home", "Blog", "Contact"].includes(path)) setIsHome(true);
+    else setIsHome(false);
+  }, [pathname]);
 
   return (
-    <nav className="nav container">
+    <nav className={`nav container ${isHome ? "" : "not-home-nav"}`}>
       <div className="nav-top flex jc-sb">
-        <Link to="/" className="nav__logo flex ai-c">
-          <Logo></Logo>
-          <h3>Clay Shop</h3>
-        </Link>
-        <div className={`nav__soc flex ${isHome ? "" : "not-home-soc"}`}>
+        <div className="nav__logo">
+          <Link to="/" className="flex ai-c">
+            <Logo></Logo>
+            <h3>Clay Shop</h3>
+          </Link>
+        </div>
+        <div className="nav__soc flex">
           <BtnLink href="/" SvgIcon={Insta}></BtnLink>
           <BtnLink href="/" SvgIcon={Twitter}></BtnLink>
           <BtnLink href="/" SvgIcon={Face}></BtnLink>
@@ -35,9 +46,9 @@ const NavBar = () => {
           <BtnSearch SvgIcon={Cart}></BtnSearch>
         </div>
       </div>
-      <div className={`nav-bot flex jc-c ${isHome ? "" : "not-home-bot"}`}>
-        <BtnMenu text="Home" active isHome={isHome}></BtnMenu>
-        <BtnMenu text="Shop" expand isHome={isHome}></BtnMenu>
+      <div className="nav-bot flex jc-c ai-c">
+        <BtnMenu text="Home" isHome={isHome}></BtnMenu>
+        <BtnDropdown text={"Shop"} isHome={isHome}></BtnDropdown>
         <BtnMenu text="Blog" isHome={isHome}></BtnMenu>
         <BtnMenu text="Contact" isHome={isHome}></BtnMenu>
       </div>

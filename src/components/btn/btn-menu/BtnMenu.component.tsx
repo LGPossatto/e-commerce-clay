@@ -1,22 +1,37 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import "./btnMenu.style.scss";
-import { ReactComponent as Arrow } from "../../../assets/icons/arrow_small.svg";
 
 interface IBtnMenu {
   text: string;
-  expand?: boolean;
-  active?: boolean;
-  isHome?: boolean;
+  isHome: boolean;
 }
 
-const BtnMenu: FC<IBtnMenu> = ({ text, expand, active, isHome }) => {
+const BtnMenu: FC<IBtnMenu> = ({ text, isHome }) => {
+  const [active, setActive] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const path = pathname.split("/")[1];
+
+    if (path === text) setActive(true);
+    else setActive(false);
+  }, [pathname, text]);
+
   return (
-    <div className={`btn-menu flex ai-c ${isHome ? "" : "not-home"}`}>
+    <Link
+      to={`/${text}`}
+      className={`btn-menu flex ai-c ${isHome ? "" : "not-home"}`}
+    >
       <h3>{text}</h3>
-      {expand && <Arrow className="btn-menu__arrow"></Arrow>}
-      {active && <span className="btn-menu__act-1"></span>}
-    </div>
+      <span
+        className={`btn-menu__act-1 ${active && isHome ? "max-height" : ""}`}
+      ></span>
+      <span
+        className={`btn-menu__act-2 ${active && !isHome ? "max-width" : ""}`}
+      ></span>
+    </Link>
   );
 };
 

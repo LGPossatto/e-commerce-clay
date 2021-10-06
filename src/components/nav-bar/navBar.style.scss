@@ -1,26 +1,32 @@
 .nav {
+  height: 165px;
+
+  transition: height 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+
   .nav-top {
     margin: 24px 0;
   }
 
   .nav-bot {
+    width: max-content;
+    margin: 0 auto;
+
     transition: transform 0.5s ease-in-out;
-  }
 
-  .not-home-bot {
-    transform: translateY(-100%);
-  }
-
-  .not-home-soc {
-    transform: translateY(-500%);
+    .dropdown {
+      z-index: 1;
+      margin-left: -10px;
+    }
   }
 
   &__logo {
     display: block;
     width: 25%;
 
-    & > h3 {
-      margin-left: 20px;
+    & > a {
+      h3 {
+        margin-left: 20px;
+      }
     }
   }
 
@@ -39,5 +45,19 @@
     & > div:not(:first-child) {
       margin-left: 15px;
     }
+  }
+}
+
+// nav transition helper
+.not-home-nav {
+  height: 85px;
+  border-radius: 0 0 10px 10px;
+
+  .nav__soc {
+    transform: translateY(-500%);
+  }
+
+  .nav-bot {
+    transform: translateY(calc(-100% - 10px));
   }
 }

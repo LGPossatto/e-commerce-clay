@@ -1,9 +1,7 @@
 @import "../../../assets/styles/varibles.style";
 @import "../../../assets/styles/animations.style";
 
-.btn-menu {
-  cursor: pointer;
-  display: block;
+.btn-dropdown {
   position: relative;
 
   margin: 10px;
@@ -12,16 +10,26 @@
 
   transition: margin-bottom 0.5s ease-in-out;
 
-  & > h3 {
-    transition: opacity 0.25s;
-
-    &:hover {
+  &:hover {
+    a,
+    svg {
       opacity: 0.75;
     }
+  }
 
-    &:active {
-      opacity: 0.5;
-    }
+  & > a {
+    transition: opacity 1.25s;
+  }
+
+  &__arrow {
+    display: block;
+    position: relative;
+
+    width: max-content;
+    height: max-content;
+    padding-left: 5px;
+
+    transition: opacity 0.25s;
   }
 
   &__act-1,
