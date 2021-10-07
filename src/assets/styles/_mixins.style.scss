@@ -1,21 +1,11 @@
-@import "./varibles.style";
-// --------------------------------------------------------------- //
-// ------------------------- BREAKPOINTS ------------------------- //
-// --------------------------------------------------------------- //
-@mixin bp-desktop-only {
-  @media (min-width: $ss-tablet + 1) {
-    @content;
-  }
-}
+@mixin hoverOpacity {
+  transition: opacity 0.25s;
 
-@mixin bp-tablet {
-  @media (max-width: $ss-tablet) {
-    @content;
+  &:hover {
+    opacity: 0.75;
   }
-}
 
-@mixin bp-mobile {
-  @media (max-width: $ss-mobile) {
-    @content;
+  &:active {
+    opacity: 0.5;
   }
 }

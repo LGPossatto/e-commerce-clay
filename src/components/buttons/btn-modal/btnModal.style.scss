@@ -1,0 +1,9 @@
+@import "../../../assets/styles/mixins.style";
+
+.btn-modal {
+  @include hoverOpacity();
+
+  cursor: pointer;
+  height: 34px;
+  padding: 5px;
+}

@@ -1,0 +1,9 @@
+@import "../../../assets/styles/mixins.style";
+
+.btn-icon {
+  @include hoverOpacity();
+
+  display: inline-block;
+  height: 34px;
+  padding: 5px;
+}

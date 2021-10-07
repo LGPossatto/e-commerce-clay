@@ -1,0 +1,32 @@
+@import "../../../assets/styles/varibles.style";
+@import "../../../assets/styles/mixins.style";
+
+.link-menu {
+  @include hoverOpacity();
+
+  position: relative;
+  padding: 5px;
+  margin: 6px;
+
+  &__active {
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 2px;
+    height: 0px;
+
+    background-color: $color-black;
+
+    transition: height 0.25s ease-in-out;
+  }
+}
+
+// NavLink class
+.active {
+  .link-menu__active {
+    height: 20px;
+  }
+}
