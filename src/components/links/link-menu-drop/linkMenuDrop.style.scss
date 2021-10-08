@@ -1,0 +1,54 @@
+@import "../../../assets/styles/varibles.style";
+@import "../../../assets/styles/mixins.style";
+
+.link-menu-drop {
+  position: relative;
+  padding: 5px;
+  margin: 6px;
+
+  & > a {
+    @include hoverOpacity();
+  }
+
+  &__active {
+    display: block;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 2px;
+    height: 0px;
+
+    background-color: $color-black;
+
+    transition: height 0.25s ease-in-out;
+  }
+
+  & > svg {
+    @include hoverOpacity();
+
+    cursor: pointer;
+
+    width: max-content;
+    height: max-content;
+    padding: 5px;
+    margin-left: 5px;
+
+    border: 1px solid $color-gray-3;
+    border-radius: 50%;
+
+    transition: transform 0.25s;
+  }
+
+  .svg-invert {
+    transform: rotate(180deg);
+  }
+}
+
+// NavLink class
+.active {
+  .link-menu-drop__active {
+    height: 20px;
+  }
+}

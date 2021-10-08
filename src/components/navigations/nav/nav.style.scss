@@ -1,0 +1,41 @@
+@import "../../../assets/styles/varibles.style";
+
+.nav {
+  position: relative;
+  background-color: $color-white;
+
+  padding: 24px 0 12px;
+
+  .nav-bot {
+    margin-top: 24px;
+  }
+
+  &__logo,
+  &__opt {
+    width: 25%;
+  }
+
+  &__logo {
+    & > a {
+      width: max-content;
+
+      h3 {
+        padding-left: 24px;
+      }
+    }
+  }
+
+  &__soc {
+    & > a:not(:first-child) {
+      margin-left: 24px;
+    }
+  }
+
+  &__opt {
+    justify-content: end;
+
+    & > div:not(:first-child) {
+      margin-left: 24px;
+    }
+  }
+}

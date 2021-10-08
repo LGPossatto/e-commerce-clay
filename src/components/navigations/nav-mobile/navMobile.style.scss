@@ -1,17 +1,17 @@
-@import "../../assets/styles/varibles.style";
+@import "../../../assets/styles/varibles.style";
 
-.nav {
+.nav-mobile {
+  position: relative;
   background-color: $color-white;
 
   padding: 24px 0 12px;
 
-  .nav-bot {
-    margin-top: 24px;
-  }
-
-  &__logo,
+  &__burg,
   &__opt {
     width: 25%;
+  }
+
+  &__burg {
   }
 
   &__logo {
@@ -19,14 +19,14 @@
       width: max-content;
 
       h3 {
-        padding-left: 24px;
+        padding-left: 12px;
       }
     }
   }
 
   &__soc {
     & > a:not(:first-child) {
-      margin-left: 24px;
+      margin-left: 12px;
     }
   }
 
@@ -34,7 +34,7 @@
     justify-content: end;
 
     & > div:not(:first-child) {
-      margin-left: 24px;
+      margin-left: 12px;
     }
   }
 }

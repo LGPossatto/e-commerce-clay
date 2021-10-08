@@ -23,6 +23,10 @@ body {
   background-color: $color-white;
 }
 
+li {
+  list-style: none;
+}
+
 // --------------------------------------------------------------- //
 // --------------------------- HELPER ---------------------------- //
 // --------------------------------------------------------------- //
@@ -33,6 +37,10 @@ body {
 
   margin-left: auto;
   margin-right: auto;
+
+  @include bp-tablet {
+    padding: 0 24px;
+  }
 }
 
 .hide-on-desktop {
@@ -150,8 +158,12 @@ a {
 }
 
 // FONT COLOR
-.font-color {
+.fc {
   &-reverse {
     color: $color-white;
+  }
+
+  &-gray-6 {
+    color: $color-gray-6;
   }
 }
