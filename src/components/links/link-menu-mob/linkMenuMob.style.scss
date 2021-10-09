@@ -1,0 +1,17 @@
+@import "../../../assets/styles/varibles.style";
+@import "../../../assets/styles/mixins.style";
+
+.link-menu-mob {
+  @include hoverOpacity();
+
+  display: block;
+  position: relative;
+
+  width: max-content;
+  padding: 5px;
+  margin: 12px;
+
+  & > h2 {
+    padding: 12px;
+  }
+}

@@ -1,9 +1,21 @@
+@import "../../../assets/styles/varibles.style";
 @import "../../../assets/styles/mixins.style";
 
 .btn-icon {
   @include hoverOpacity();
 
   display: inline-block;
+  width: max-content;
   height: 34px;
-  padding: 5px;
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+  }
+}
+
+.btn-icon-circle {
+  border: 2px solid $color-gray-2;
+  border-radius: 50%;
 }

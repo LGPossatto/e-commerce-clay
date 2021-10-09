@@ -1,0 +1,41 @@
+@import "../../../assets/styles/varibles.style";
+@import "../../../assets/styles/mixins.style";
+
+.link-menu-mob-drop {
+  position: relative;
+  width: 100%;
+  height: 56px;
+  margin: 6px;
+
+  & > a {
+    @include hoverOpacity();
+
+    position: absolute;
+    left: calc(50% - 5px);
+    transform: translateX(-50%);
+
+    padding: 5px;
+  }
+
+  & > svg {
+    @include hoverOpacity();
+
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+
+    border: 1px solid $color-gray-3;
+    border-radius: 50%;
+
+    transform: rotate(90deg);
+    transition: transform 0.25s;
+  }
+
+  .svg-invert {
+    transform: rotate(270deg);
+  }
+}

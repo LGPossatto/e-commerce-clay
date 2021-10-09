@@ -1,23 +1,24 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./navMobile.style.scss";
 import { ReactComponent as Logo } from "../../../assets/icons/logo.svg";
-import { ReactComponent as Insta } from "../../../assets/icons/instagram_icn _1.svg";
-import { ReactComponent as Twitter } from "../../../assets/icons/twitter_icn_1.svg";
-import { ReactComponent as Face } from "../../../assets/icons/facebook_icn_1.svg";
 import { ReactComponent as Search } from "../../../assets/icons/search_icn_black.svg";
 import { ReactComponent as User } from "../../../assets/icons/user_icn.svg";
 import { ReactComponent as Cart } from "../../../assets/icons/cart_icn.svg";
 
 import BtnModal from "../../buttons/btn-modal/BtnModal.component";
 import BtnBurg from "../../buttons/btn-burg/BtnBurg.component";
+import DropdownMobile from "../../dropdown/dropdown-mobile/DropdownMobile.component";
 
 const NavMobile = () => {
+  const [dropMob, setDropMob] = useState(false);
+
   return (
     <nav className="nav-mobile hide-on-desktop">
       <section className="nav-mobile-top container flex ai-c jc-sb">
         <div className="nav-mobile__burg flex">
-          <BtnBurg></BtnBurg>
+          <BtnBurg drop={dropMob} setDrop={setDropMob}></BtnBurg>
         </div>
         <div className="nav-mobile__logo">
           <Link to="/" className="flex ai-c">
@@ -31,6 +32,9 @@ const NavMobile = () => {
           <BtnModal SvgComponent={Cart}></BtnModal>
         </div>
       </section>
+      <div className={`nav-mobile__drop ${dropMob ? "drop-mob-active" : ""}`}>
+        <DropdownMobile></DropdownMobile>
+      </div>
     </nav>
   );
 };
