@@ -50,8 +50,8 @@ const Nav = () => {
         <LinkMenu text="Blog"></LinkMenu>
         <LinkMenu text="Contact"></LinkMenu>
       </section>
-      <DropdownMenu isActive={dropShop} onLeave={setDropShop}>
-        <DropdownShop onLinkClick={setDropShop}></DropdownShop>
+      <DropdownMenu isActive={dropShop} onLeave={() => setDropShop(false)}>
+        <DropdownShop onLinkClick={() => setDropShop(false)}></DropdownShop>
       </DropdownMenu>
     </nav>
   );

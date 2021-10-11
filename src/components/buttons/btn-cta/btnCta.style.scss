@@ -1,0 +1,23 @@
+@import "../../../assets/styles/varibles.style";
+@import "../../../assets/styles/mixins.style";
+
+.btn-cta {
+  @include hoverOpacity();
+
+  cursor: pointer;
+
+  min-width: 170px;
+  width: max-content;
+  min-height: 52px;
+  padding: 16px;
+
+  background-color: $color-pink;
+  border-radius: 16px;
+
+  text-align: center;
+}
+
+.btn-cta-white {
+  background-color: transparent;
+  border: 1px solid $color-white;
+}

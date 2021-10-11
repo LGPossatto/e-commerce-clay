@@ -9,15 +9,13 @@ interface props {
 }
 
 const LinkCluster: FC<props> = ({ title, links, onLinkClick }) => {
-  console.log(links);
-
   return (
     <ul className="link-cluster">
       <h3>{title}</h3>
       {links.map(({ text, href }) => (
         <li key={text}>
           <Link
-            onClick={() => onLinkClick(false)}
+            onClick={() => onLinkClick()}
             to={href}
             className="link-cluster__link font-subtitle-regular fc-gray-6"
           >

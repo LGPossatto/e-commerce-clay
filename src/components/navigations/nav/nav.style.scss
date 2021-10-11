@@ -8,6 +8,10 @@
 
   .nav-bot {
     margin-top: 24px;
+
+    & > :not(:first-child) {
+      margin-left: 7.5%;
+    }
   }
 
   &__logo,

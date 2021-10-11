@@ -10,7 +10,7 @@ const DropdownMenu: FC<props> = ({ children, isActive, onLeave }) => {
   return (
     <div
       className={`dropdown-menu ${isActive ? "drop-active" : ""}`}
-      onMouseLeave={() => onLeave(false)}
+      onMouseLeave={() => onLeave()}
     >
       <div className="dropdown-menu__helper container">{children}</div>
     </div>

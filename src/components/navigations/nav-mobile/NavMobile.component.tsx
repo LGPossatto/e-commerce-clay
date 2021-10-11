@@ -33,7 +33,7 @@ const NavMobile = () => {
         </div>
       </section>
       <div className={`nav-mobile__drop ${dropMob ? "drop-mob-active" : ""}`}>
-        <DropdownMobile></DropdownMobile>
+        <DropdownMobile onLinkClick={() => setDropMob(false)}></DropdownMobile>
       </div>
     </nav>
   );
