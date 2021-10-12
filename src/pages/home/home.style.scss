@@ -1,0 +1,57 @@
+@import "../../assets/styles/breakpoints.style";
+
+.home {
+  &__cards {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+
+    margin-top: 48px;
+    margin-bottom: 48px;
+
+    & > div {
+      min-height: 208px;
+    }
+  }
+
+  .card-big {
+    min-height: 416px;
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .card-long {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 1125px) {
+    .home__cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-long {
+      grid-column: span 3;
+    }
+  }
+
+  @include bp-tablet {
+    .home__cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-long {
+      grid-column: span 2;
+    }
+
+    .card-small {
+      grid-row: 3;
+    }
+  }
+
+  @include bp-mobile {
+    .card-small {
+      grid-row: unset;
+      grid-column: span 2;
+    }
+  }
+}

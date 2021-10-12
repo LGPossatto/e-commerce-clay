@@ -1,11 +1,11 @@
-@mixin hoverOpacity {
+@mixin hoverOpacity($hoverLvl: 0.75, $activeLvl: 0.5) {
   transition: opacity 0.25s;
 
   &:hover {
-    opacity: 0.75;
+    opacity: $hoverLvl;
   }
 
   &:active {
-    opacity: 0.5;
+    opacity: $activeLvl;
   }
 }
