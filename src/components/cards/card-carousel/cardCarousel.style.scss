@@ -1,0 +1,12 @@
+.card-carousel {
+  width: 178px;
+  height: 232px;
+  padding: 12px;
+
+  text-align: center;
+
+  &__img {
+    flex-grow: 1;
+    width: 100%;
+  }
+}

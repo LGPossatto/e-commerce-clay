@@ -1,0 +1,26 @@
+@import "../../assets/styles/varibles.style";
+
+.bullet {
+  width: 16px;
+  height: 16px;
+  margin: 12px 6px;
+
+  border-radius: 50%;
+
+  & > span {
+    display: block;
+    width: 8px;
+    height: 8px;
+
+    background-color: $color-gray-6;
+    border-radius: 50%;
+  }
+}
+
+.bullet-active {
+  border: 1px solid $color-black;
+
+  & > span {
+    background-color: $color-black;
+  }
+}

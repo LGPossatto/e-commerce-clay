@@ -1,0 +1,76 @@
+@import "../../assets/styles/varibles.style";
+@import "../../assets/styles/mixins.style";
+
+.carousel {
+  position: relative;
+  padding: 24px;
+
+  background-color: $color-white;
+  border-radius: 16px;
+
+  &__top {
+    position: relative;
+    min-height: 232px;
+  }
+
+  &__box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    transition: transform 0.5s ease-in-out;
+  }
+
+  // carousel movement
+  .carousel-box-l {
+    transform: translateX(-100%);
+  }
+
+  .carousel-box-r {
+    transform: translateX(100%);
+  }
+
+  &__arrows {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    & > svg {
+      @include hoverOpacity();
+
+      cursor: pointer;
+      width: max-content;
+      height: max-content;
+      padding: 12px;
+
+      &:first-child {
+        margin-left: 12px;
+        transform: rotate(90deg);
+      }
+
+      &:last-child {
+        margin-right: 12px;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+.a0 {
+  background-color: blue;
+}
+
+.a1 {
+  background-color: red;
+}
+.a2 {
+  background-color: green;
+}
+.a3 {
+  background-color: orange;
+}
