@@ -6,6 +6,9 @@
   margin: 12px 6px;
 
   border-radius: 50%;
+  border: 1px solid transparent;
+
+  transition: border-color 0.25s ease-in-out;
 
   & > span {
     display: block;
@@ -14,11 +17,13 @@
 
     background-color: $color-gray-6;
     border-radius: 50%;
+
+    transition: background-color 0.25s ease-in-out;
   }
 }
 
 .bullet-active {
-  border: 1px solid $color-black;
+  border-color: $color-black;
 
   & > span {
     background-color: $color-black;

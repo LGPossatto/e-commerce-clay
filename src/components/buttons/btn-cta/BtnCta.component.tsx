@@ -5,15 +5,18 @@ interface props {
   text: string;
   onClick: Function;
   whiteBorder?: boolean;
+  pinkBorder?: boolean;
 }
 
-const BtnCta: FC<props> = ({ text, onClick, whiteBorder }) => {
+const BtnCta: FC<props> = ({ text, onClick, whiteBorder, pinkBorder }) => {
   return (
     <div
-      className={`btn-cta ${whiteBorder ? "btn-cta-white" : ""}`}
+      className={`btn-cta ${whiteBorder ? "btn-cta-white" : ""} ${
+        pinkBorder ? "btn-cta-pink" : ""
+      }`}
       onClick={() => onClick()}
     >
-      <h4 className={`${whiteBorder ? "fc-reverse" : ""}`}>{text}</h4>
+      <h4 className={`fc-reverse`}>{text}</h4>
     </div>
   );
 };

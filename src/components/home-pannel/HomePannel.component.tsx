@@ -1,6 +1,6 @@
 import "./homePannel.style.scss";
-import imgPannel from "../../assets/images/img-girl-pannel.png";
-import imgLines from "../../assets/images/img-lines-pannel.png";
+import imgPannel from "../../assets/images/img-pannel.png";
+import imgLines from "../../assets/images/img-pannel-lines.png";
 import BtnCta from "../buttons/btn-cta/BtnCta.component";
 
 const HomePannel = () => {

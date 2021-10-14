@@ -12,68 +12,41 @@ import Bullet from "../bullet/Bullet.component";
 
 const data = [
   [
-    { text: "Louis Vouiton", href: "/", imgCarousel: imgCarousel1 },
-    { text: "Dolce&Gabbana", href: "/", imgCarousel: imgCarousel2 },
-    { text: "Gucci", href: "/", imgCarousel: imgCarousel3 },
-    { text: "Dries van Noten", href: "/", imgCarousel: imgCarousel4 },
+    { text: "Louis Vouiton1", href: "/", imgCarousel: imgCarousel1 },
+    { text: "Dolce&Gabbana2", href: "/", imgCarousel: imgCarousel2 },
+    { text: "Gucci3", href: "/", imgCarousel: imgCarousel3 },
+    { text: "Dries van Noten4", href: "/", imgCarousel: imgCarousel4 },
   ],
   [
-    { text: "Louis Vouiton", href: "/", imgCarousel: imgCarousel1 },
-    { text: "Dolce&Gabbana", href: "/", imgCarousel: imgCarousel2 },
-    { text: "Gucci", href: "/", imgCarousel: imgCarousel3 },
-    { text: "Dries van Noten", href: "/", imgCarousel: imgCarousel4 },
+    { text: "Louis Vouiton5", href: "/", imgCarousel: imgCarousel1 },
+    { text: "Dolce&Gabbana6", href: "/", imgCarousel: imgCarousel2 },
+    { text: "Gucci7", href: "/", imgCarousel: imgCarousel3 },
+    { text: "Dries van Noten8", href: "/", imgCarousel: imgCarousel4 },
   ],
   [
-    { text: "Louis Vouiton", href: "/", imgCarousel: imgCarousel1 },
-    { text: "Dolce&Gabbana", href: "/", imgCarousel: imgCarousel2 },
-    { text: "Gucci", href: "/", imgCarousel: imgCarousel3 },
-    { text: "Dries van Noten", href: "/", imgCarousel: imgCarousel4 },
+    { text: "Louis Vouiton9", href: "/", imgCarousel: imgCarousel1 },
+    { text: "Dolce&Gabbana10", href: "/", imgCarousel: imgCarousel2 },
+    { text: "Gucci11", href: "/", imgCarousel: imgCarousel3 },
+    { text: "Dries van Noten12", href: "/", imgCarousel: imgCarousel4 },
   ],
   [
-    { text: "Louis Vouiton", href: "/", imgCarousel: imgCarousel1 },
-    { text: "Dolce&Gabbana", href: "/", imgCarousel: imgCarousel2 },
-    { text: "Gucci", href: "/", imgCarousel: imgCarousel3 },
-    { text: "Dries van Noten", href: "/", imgCarousel: imgCarousel4 },
+    { text: "Louis Vouiton13", href: "/", imgCarousel: imgCarousel1 },
+    { text: "Dolce&Gabbana14", href: "/", imgCarousel: imgCarousel2 },
+    { text: "Gucci15", href: "/", imgCarousel: imgCarousel3 },
+    { text: "Dries van Noten16", href: "/", imgCarousel: imgCarousel4 },
   ],
 ];
 
 const Carousel = () => {
-  const [boxRef, setBoxRef] = useState<HTMLDivElement[]>([]);
-  let activeIdx = 0;
+  const boxRef: HTMLDivElement[] = [];
+  const [activeIdx, setActiveIdx] = useState<number>(0);
+  //let activeIdx = 0;
 
   const pushRef = (el: HTMLDivElement) => {
-    if (!boxRef.includes(el)) boxRef.push(el);
+    if (!boxRef.includes(el) && el !== null) boxRef.push(el);
   };
 
   const leftArrowClick = () => {
-    console.log(activeIdx, boxRef);
-    const boxLIdx = boxRef.length - 1;
-
-    boxRef[activeIdx].classList.add("carousel-box-r");
-
-    if (activeIdx === 0) {
-      activeIdx = boxLIdx;
-
-      boxRef[activeIdx].classList.remove("carousel-box-l");
-      boxRef[activeIdx - 1].classList.remove("carousel-box-r");
-      boxRef[activeIdx - 1].classList.add("carousel-box-l");
-    } else if (activeIdx === 1) {
-      activeIdx--;
-
-      boxRef[activeIdx].classList.remove("carousel-box-l");
-      boxRef[boxLIdx].classList.remove("carousel-box-r");
-      boxRef[boxLIdx].classList.add("carousel-box-l");
-    } else {
-      activeIdx--;
-
-      boxRef[activeIdx].classList.remove("carousel-box-l");
-      boxRef[activeIdx - 1].classList.remove("carousel-box-r");
-      boxRef[activeIdx - 1].classList.add("carousel-box-l");
-    }
-  };
-
-  const rightArrowClick = () => {
-    console.log(activeIdx, boxRef);
     const boxLIdx = boxRef.length - 1;
 
     boxRef[activeIdx].classList.add("carousel-box-l");
@@ -87,11 +60,38 @@ const Carousel = () => {
     }
 
     if (activeIdx === boxLIdx) {
-      activeIdx = 0;
+      boxRef[0].classList.remove("carousel-box-r");
+      setActiveIdx(0);
     } else {
-      activeIdx++;
+      boxRef[activeIdx + 1].classList.remove("carousel-box-r");
+      setActiveIdx(activeIdx + 1);
     }
-    boxRef[activeIdx].classList.remove("carousel-box-r");
+  };
+
+  const rightArrowClick = () => {
+    const boxLIdx = boxRef.length - 1;
+
+    boxRef[activeIdx].classList.add("carousel-box-r");
+
+    if (activeIdx === 0) {
+      boxRef[boxLIdx].classList.remove("carousel-box-l");
+      boxRef[boxLIdx - 1].classList.remove("carousel-box-r");
+      boxRef[boxLIdx - 1].classList.add("carousel-box-l");
+
+      setActiveIdx(boxLIdx);
+    } else {
+      if (activeIdx === 1) {
+        boxRef[activeIdx - 1].classList.remove("carousel-box-l");
+        boxRef[boxLIdx].classList.remove("carousel-box-r");
+        boxRef[boxLIdx].classList.add("carousel-box-l");
+      } else {
+        boxRef[activeIdx - 1].classList.remove("carousel-box-l");
+        boxRef[activeIdx - 2].classList.remove("carousel-box-r");
+        boxRef[activeIdx - 2].classList.add("carousel-box-l");
+      }
+
+      setActiveIdx(activeIdx - 1);
+    }
   };
 
   useEffect(() => {
@@ -112,7 +112,7 @@ const Carousel = () => {
           {data.map((box, i) => (
             <div
               key={i}
-              className={`carousel__box flex jc-se ${"a" + i}`}
+              className="carousel__box flex flex-fw-w jc-se"
               ref={(el) => pushRef(el!)}
             >
               {box.map((item, i) => (
@@ -127,10 +127,10 @@ const Carousel = () => {
           ))}
         </div>
         <div className="carousel__bot flex jc-c">
-          <Bullet active></Bullet>
-          <Bullet></Bullet>
-          <Bullet></Bullet>
-          <Bullet></Bullet>
+          <Bullet active={activeIdx === 0}></Bullet>
+          <Bullet active={activeIdx === 1}></Bullet>
+          <Bullet active={activeIdx === 2}></Bullet>
+          <Bullet active={activeIdx === 3}></Bullet>
         </div>
         <div className="carousel__arrows flex jc-sb ai-c">
           <Arrow onClick={leftArrowClick}></Arrow>

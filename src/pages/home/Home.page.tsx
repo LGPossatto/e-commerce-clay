@@ -1,12 +1,13 @@
 import "./home.style.scss";
-import imgCard from "../../assets/images/img-girl-card.jpg";
-import imgCardSmall from "../../assets/images/img-girl-card-small.png";
-import imgCardLong from "../../assets/images/img-girl-card-long.png";
+import imgCard from "../../assets/images/img-card.jpg";
+import imgCardSmall from "../../assets/images/img-card-small.png";
+import imgCardLong from "../../assets/images/img-card-long.png";
 
 import HomePannel from "../../components/home-pannel/HomePannel.component";
 import CardShowcase from "../../components/cards/card-showcase/CardShowcase.component";
 import CardShowcaseSmall from "../../components/cards/card-showcase-small/CardShowcaseSmall.component";
 import Carousel from "../../components/carousel/Carousel.component";
+import Interest from "../../components/interest/Interest.component";
 
 const Home = () => {
   return (
@@ -44,6 +45,7 @@ const Home = () => {
         </div>
       </section>
       <Carousel></Carousel>
+      <Interest></Interest>
     </div>
   );
 };

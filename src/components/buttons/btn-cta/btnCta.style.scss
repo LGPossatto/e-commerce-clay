@@ -21,3 +21,12 @@
   background-color: transparent;
   border: 1px solid $color-white;
 }
+
+.btn-cta-pink {
+  background-color: transparent;
+  border: 1px solid $color-pink;
+
+  & > h4 {
+    color: $color-pink;
+  }
+}

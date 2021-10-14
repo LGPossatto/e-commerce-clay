@@ -1,0 +1,30 @@
+.interest {
+  & > h2 {
+    margin: 48px 0;
+  }
+
+  &__cards-box {
+    & > :not(:first-child) {
+      margin-left: 24px;
+    }
+
+    & > :last-child {
+      @media (max-width: 1000px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 550px) {
+      flex-wrap: wrap;
+      justify-content: center;
+
+      & > a {
+        margin: 24px 0;
+      }
+
+      & > :last-child {
+        display: block;
+      }
+    }
+  }
+}
