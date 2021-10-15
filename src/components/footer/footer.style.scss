@@ -1,0 +1,54 @@
+@import "../../assets/styles/varibles.style";
+
+.footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  background-color: $color-white;
+
+  &__bot {
+    padding: 12px 0;
+    background-color: $color-gray-2;
+  }
+
+  &__soc {
+    height: 34px;
+
+    & > a:not(:first-child) {
+      margin-left: 24px;
+    }
+  }
+
+  &__links {
+    padding-bottom: 24px;
+
+    .footer-moto {
+      width: 25%;
+
+      & > a {
+        margin: 24px 0;
+      }
+
+      & > p {
+        line-height: 28px;
+      }
+    }
+
+    .footer-link-clusters {
+      flex-grow: 1;
+    }
+
+    @media (max-width: 650px) {
+      flex-direction: column;
+
+      .footer-moto {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .footer-link-clusters {
+        flex-direction: column;
+      }
+    }
+  }
+}

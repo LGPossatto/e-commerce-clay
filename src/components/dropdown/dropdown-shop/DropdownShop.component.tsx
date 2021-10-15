@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import "./dropdownShop.style.scss";
-import imgCard from "../../../assets/images/placeholder.jpg";
+import imgCard from "../../../assets/images/img-card-drop.jpg";
 
 import LinkCluster from "../../links/link-cluster/LinkCluster.component";
 import CardImg from "../../cards/card-img/CardImg.component";

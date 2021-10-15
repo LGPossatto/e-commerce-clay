@@ -1,2 +1,7 @@
 .dropdown-shop {
+  @media (max-width: 950px) {
+    & > a {
+      width: 150px;
+    }
+  }
 }
