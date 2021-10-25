@@ -4,6 +4,7 @@ import Nav from "./components/navigations/nav/Nav.component";
 import NavMobile from "./components/navigations/nav-mobile/NavMobile.component";
 import Footer from "./components/footer/Footer.component";
 import Home from "./pages/home/Home.page";
+import Shop from "./pages/shop/Shop.page";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <NavMobile></NavMobile>
       <Switch>
         <Route exact path="/Home" component={Home}></Route>
+        <Route exact path="/Shop" component={Shop}></Route>
         <Redirect exact path="/" to="/Home"></Redirect>
       </Switch>
       <Footer></Footer>

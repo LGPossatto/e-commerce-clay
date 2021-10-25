@@ -1,0 +1,58 @@
+@import "../../assets/styles/varibles.style";
+
+.shop {
+  & > :first-child {
+    margin-top: 12px;
+  }
+
+  &__items {
+    margin: 48px 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    & > * {
+      width: 100%;
+    }
+
+    @media (max-width: 950px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 550px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__pages {
+    width: 100%;
+
+    svg {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+
+      &:first-child {
+        transform: rotate(90deg);
+      }
+
+      &:last-child {
+        transform: rotate(-90deg);
+      }
+    }
+
+    h4 {
+      cursor: pointer;
+      padding: 4px 10px;
+      margin: 2px;
+
+      &:first-child {
+        border-radius: 8px;
+
+        background-color: $color-pink;
+        color: $color-white;
+      }
+    }
+  }
+}
