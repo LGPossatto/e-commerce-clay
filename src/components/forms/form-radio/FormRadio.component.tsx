@@ -16,7 +16,7 @@ const FormRadio: FC<props> = ({ text, options }) => {
             <input
               type="radio"
               id={option}
-              name="radios"
+              name={options[1] + " ipt-radio"}
               value={option}
             ></input>
             <label

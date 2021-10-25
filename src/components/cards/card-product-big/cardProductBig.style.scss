@@ -1,0 +1,19 @@
+@import "../../../assets/styles/varibles.style";
+
+.card-product-big {
+  padding: 24px;
+  border-radius: 16px;
+  background-color: $color-white;
+
+  & > * {
+    width: 50%;
+  }
+
+  &__img-box {
+  }
+  &__info {
+    & > *:not(:nth-child(4)) {
+      margin-bottom: 24px;
+    }
+  }
+}

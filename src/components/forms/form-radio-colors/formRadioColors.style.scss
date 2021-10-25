@@ -1,0 +1,62 @@
+@import "../../../assets/styles/varibles.style";
+
+.form-radio-colors {
+  width: 100%;
+
+  p {
+    margin: 12px 0;
+  }
+
+  .radio-box {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+
+    height: 38px;
+    width: 38px;
+
+    &:not(:first-child) {
+      margin-left: 12px;
+    }
+  }
+
+  label {
+    position: absolute;
+    height: 80%;
+    width: 80%;
+
+    border-radius: 8px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: -4px;
+
+      width: 38px;
+      height: 38px;
+
+      border: 2px solid transparent;
+      border-radius: 8px;
+
+      transition: border 0.25s ease-in-out;
+    }
+  }
+
+  input {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+  }
+
+  input[type="radio"]:checked + label {
+    &::after {
+      border-color: $color-black;
+    }
+  }
+}
