@@ -1,0 +1,49 @@
+@import "../../assets/styles/varibles.style";
+
+.cart-item {
+  padding: 24px;
+
+  svg {
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-gray-2;
+    border-radius: 50%;
+  }
+
+  &__desc {
+    img {
+      object-fit: contain;
+      width: 112px;
+      height: 112px;
+
+      border: 2px solid $color-gray-2;
+      border-radius: 8px;
+    }
+
+    h4 {
+      margin-left: 24px;
+    }
+  }
+
+  &__btns {
+    svg:first-child {
+      margin-right: 12px;
+      transform: rotate(180deg);
+    }
+    svg:last-child {
+      margin-left: 12px;
+      transform: rotate(180deg);
+    }
+  }
+
+  @media (max-width: 650px) {
+    flex-wrap: wrap;
+
+    &__desc {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+  }
+}

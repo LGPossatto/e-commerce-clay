@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer.component";
 import Home from "./pages/home/Home.page";
 import Shop from "./pages/shop/Shop.page";
 import Product from "./pages/product/Product.page";
+import Cart from "./pages/cart/Cart.page";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route exact path="/Home" component={Home}></Route>
         <Route exact path="/Shop" component={Shop}></Route>
         <Route exact path="/Product" component={Product}></Route>
+        <Route exact path="/Cart" component={Cart}></Route>
         <Redirect exact path="/" to="/Home"></Redirect>
       </Switch>
       <Footer></Footer>

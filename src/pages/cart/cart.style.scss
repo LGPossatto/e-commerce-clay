@@ -1,0 +1,53 @@
+@import "../../assets/styles/varibles.style";
+
+.cart {
+  min-height: calc(100vh - 405px - 150px);
+
+  & > div:first-child {
+    overflow: hidden;
+    position: relative;
+
+    min-height: 500px;
+    padding-bottom: 162px;
+    margin-top: 48px;
+
+    border-radius: 16px;
+    background-color: $color-white;
+  }
+
+  &__progress {
+    & > div {
+      width: 100%;
+      text-align: center;
+
+      h4 {
+        padding: 24px;
+        color: $color-gray-6;
+      }
+    }
+
+    .progress-active {
+      border-bottom: 3px solid $color-pink;
+
+      h4 {
+        color: $color-black;
+      }
+    }
+  }
+
+  &__items {
+  }
+
+  &__bot {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding: 24px;
+
+    h2 {
+      margin-bottom: 12px;
+    }
+  }
+}
