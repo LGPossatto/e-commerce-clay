@@ -5,13 +5,16 @@ import Pill from "../../pill/Pill.component";
 import BtnCta from "../../buttons/btn-cta/BtnCta.component";
 import FormRadio from "../../forms/form-radio/FormRadio.component";
 import FormRadioColors from "../../forms/form-radio-colors/FormRadioColors.component";
+import CarouselCardImg from "../../carousel/carousel-card-img/CarouselCardImg.component";
 
 interface props {}
 
 const CardProduct: FC<props> = () => {
   return (
-    <div className="card-product-big flex jc-sb">
-      <div className="card-product-big__img-box"></div>
+    <div className="card-product-big flex flex-fw-w jc-sb">
+      <div className="card-product-big__img-box">
+        <CarouselCardImg></CarouselCardImg>
+      </div>
       <div className="card-product-big__info">
         <Pill productPill text="Popular"></Pill>
         <h1 className="">Black Valentino dress with tulle</h1>
@@ -27,10 +30,12 @@ const CardProduct: FC<props> = () => {
           text="Colors"
           options={["1B2437", "127681", "32E0C4"]}
         ></FormRadioColors>
-        <div className="flex jc-sb ai-c">
+        <div className="card-product-big__cta-box flex jc-sb ai-c">
           <h2>$ 1315</h2>
-          <BtnCta text="Shop Now" onClick={() => {}}></BtnCta>
-          <BtnCta text="Add to Cart" pinkBorder onClick={() => {}}></BtnCta>
+          <div className="flex jc-fe ai-c">
+            <BtnCta text="Shop Now" onClick={() => {}}></BtnCta>
+            <BtnCta text="Add to Cart" pinkBorder onClick={() => {}}></BtnCta>
+          </div>
         </div>
       </div>
     </div>

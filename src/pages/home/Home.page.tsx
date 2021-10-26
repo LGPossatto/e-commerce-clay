@@ -6,7 +6,7 @@ import imgCardLong from "../../assets/images/img-card-long.png";
 import HomePannel from "../../components/home-pannel/HomePannel.component";
 import CardShowcase from "../../components/cards/card-showcase/CardShowcase.component";
 import CardShowcaseSmall from "../../components/cards/card-showcase-small/CardShowcaseSmall.component";
-import Carousel from "../../components/carousel/Carousel.component";
+import CarouselItems from "../../components/carousel/carousel-items/CarouselItems.component";
 import Interest from "../../components/interest/Interest.component";
 
 const Home = () => {
@@ -44,7 +44,7 @@ const Home = () => {
           ></CardShowcaseSmall>
         </div>
       </section>
-      <Carousel></Carousel>
+      <CarouselItems></CarouselItems>
       <Interest></Interest>
     </div>
   );

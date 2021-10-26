@@ -1,6 +1,6 @@
 import "./product.style.scss";
 import CardProductBig from "../../components/cards/card-product-big/CardProductBig.component";
-import Carousel from "../../components/carousel/Carousel.component";
+import CarouselItems from "../../components/carousel/carousel-items/CarouselItems.component";
 
 const Shop = () => {
   return (
@@ -8,7 +8,7 @@ const Shop = () => {
       <div className="container">
         <CardProductBig></CardProductBig>
       </div>
-      <Carousel></Carousel>
+      <CarouselItems></CarouselItems>
     </div>
   );
 };

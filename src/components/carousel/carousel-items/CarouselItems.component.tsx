@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
-import "./carousel.style.scss";
-import { ReactComponent as Arrow } from "../../assets/icons/arrow_small.svg";
-import imgCarousel1 from "../../assets/images/img-carousel-1.png";
-import imgCarousel2 from "../../assets/images/img-carousel-2.png";
-import imgCarousel3 from "../../assets/images/img-carousel-3.png";
-import imgCarousel4 from "../../assets/images/img-carousel-4.png";
+import "./carouselItems.style.scss";
+import { ReactComponent as Arrow } from "../../../assets/icons/arrow_small.svg";
+import imgCarousel1 from "../../../assets/images/img-carousel-1.png";
+import imgCarousel2 from "../../../assets/images/img-carousel-2.png";
+import imgCarousel3 from "../../../assets/images/img-carousel-3.png";
+import imgCarousel4 from "../../../assets/images/img-carousel-4.png";
 
-import CardCarousel from "../cards/card-carousel/CardCarousel.component";
-import Bullet from "../bullet/Bullet.component";
+import CardCarousel from "../../cards/card-carousel/CardCarousel.component";
+import Bullet from "../../bullet/Bullet.component";
 
 const data = [
   [
@@ -37,7 +37,7 @@ const data = [
   ],
 ];
 
-const Carousel = () => {
+const CarouselItems = () => {
   const boxRef: HTMLDivElement[] = [];
   const [activeIdx, setActiveIdx] = useState<number>(0);
   //let activeIdx = 0;
@@ -107,12 +107,12 @@ const Carousel = () => {
 
   return (
     <section className="container">
-      <div className="carousel">
-        <div className="carousel__top">
+      <div className="carousel-items">
+        <div className="carousel-items__top">
           {data.map((box, i) => (
             <div
               key={i}
-              className="carousel__box flex flex-fw-w jc-se"
+              className="carousel-items__box flex flex-fw-w jc-se"
               ref={(el) => pushRef(el!)}
             >
               {box.map((item, i) => (
@@ -126,13 +126,13 @@ const Carousel = () => {
             </div>
           ))}
         </div>
-        <div className="carousel__bot flex jc-c">
+        <div className="carousel-items__bot flex jc-c">
           <Bullet active={activeIdx === 0}></Bullet>
           <Bullet active={activeIdx === 1}></Bullet>
           <Bullet active={activeIdx === 2}></Bullet>
           <Bullet active={activeIdx === 3}></Bullet>
         </div>
-        <div className="carousel__arrows flex jc-sb ai-c">
+        <div className="carousel-items__arrows flex jc-sb ai-c">
           <Arrow onClick={leftArrowClick}></Arrow>
           <Arrow onClick={rightArrowClick}></Arrow>
         </div>
@@ -141,4 +141,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default CarouselItems;
