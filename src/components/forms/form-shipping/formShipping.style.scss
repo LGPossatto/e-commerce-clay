@@ -1,0 +1,28 @@
+.form-shipping {
+  max-width: 750px;
+  margin: 0 auto;
+
+  & > div {
+    & > :not(:last-child) {
+      margin-right: 24px;
+    }
+
+    @media (max-width: 450px) {
+      flex-direction: column;
+
+      & > :not(:last-child) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__location-more {
+    :first-child {
+      width: 35%;
+
+      @media (max-width: 450px) {
+        width: 100%;
+      }
+    }
+  }
+}

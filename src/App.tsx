@@ -7,6 +7,7 @@ import Home from "./pages/home/Home.page";
 import Shop from "./pages/shop/Shop.page";
 import Product from "./pages/product/Product.page";
 import Cart from "./pages/cart/Cart.page";
+import NotFound from "./pages/not-found/NotFound.component";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route exact path="/Product" component={Product}></Route>
         <Route exact path="/Cart" component={Cart}></Route>
         <Redirect exact path="/" to="/Home"></Redirect>
+        <Route component={NotFound}></Route>
       </Switch>
       <Footer></Footer>
     </BrowserRouter>

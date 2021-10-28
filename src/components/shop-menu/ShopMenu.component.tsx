@@ -7,14 +7,17 @@ const ShopMenu = () => {
     <div className="shop-menu flex jc-sb ai-c">
       <FormOptions
         label="Show"
+        id="show"
         options={["Popular", "Man", "Woman", "Kids"]}
       ></FormOptions>
       <FormOptions
         label="Price"
+        id="price"
         options={["Any", "Less than $100", "Less than $500", "Less than $1000"]}
       ></FormOptions>
       <FormOptions
         label="Brand"
+        id="brand"
         options={["Any", "Gucci", "Yves Saint Laurent", "Karl Lagerfeld"]}
       ></FormOptions>
       <FormRadio text="Size" options={["L", "M", "S"]}></FormRadio>

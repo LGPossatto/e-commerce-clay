@@ -11,6 +11,7 @@
   }
 
   select {
+    cursor: pointer;
     display: block;
     width: 100%;
     padding: 8px;
@@ -20,5 +21,20 @@
     border-radius: 8px;
 
     font-family: $font-body;
+  }
+}
+
+.form-options-bold {
+  label {
+    margin: 0;
+  }
+
+  select {
+    cursor: pointer;
+    padding: 12px;
+    margin: 12px 0 24px;
+
+    border: 1px solid $color-gray-3;
+    color: $color-gray-6;
   }
 }

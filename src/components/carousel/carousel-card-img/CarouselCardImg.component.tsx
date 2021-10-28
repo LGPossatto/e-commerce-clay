@@ -27,6 +27,7 @@ const CarouselCardImg = () => {
       <div className="carousel-card-img__bot flex">
         {imgs.map((img, i) => (
           <div
+            key={i}
             className="img-box"
             onClick={() => {
               setActiveIdx(i);

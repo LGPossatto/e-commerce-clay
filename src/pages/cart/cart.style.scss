@@ -1,7 +1,7 @@
 @import "../../assets/styles/varibles.style";
 
 .cart {
-  min-height: calc(100vh - 405px - 150px);
+  min-height: calc(100vh - 605px);
 
   & > div:first-child {
     overflow: hidden;
@@ -13,16 +13,37 @@
 
     border-radius: 16px;
     background-color: $color-white;
+
+    @media (max-width: 450px) {
+      padding-bottom: 232px;
+    }
   }
 
   &__progress {
     & > div {
+      overflow: hidden;
       width: 100%;
+
+      white-space: nowrap;
       text-align: center;
+
+      border-bottom: 3px solid $color-gray-2;
 
       h4 {
         padding: 24px;
         color: $color-gray-6;
+      }
+
+      @media (max-width: 500px) {
+        width: 16.33%;
+
+        h4 {
+          overflow: hidden;
+          white-space: nowrap;
+
+          width: 0;
+          padding: 24px 22px;
+        }
       }
     }
 
@@ -32,10 +53,34 @@
       h4 {
         color: $color-black;
       }
+
+      @media (max-width: 500px) {
+        width: 50%;
+
+        h4 {
+          width: 100%;
+        }
+      }
     }
   }
 
-  &__items {
+  &__checkout,
+  &__shipping {
+    padding: 24px;
+  }
+
+  &__done {
+    padding: 48px 24px;
+    text-align: center;
+
+    h2 {
+      margin-top: 48px;
+    }
+
+    p {
+      max-width: 350px;
+      margin: 12px 0 24px;
+    }
   }
 
   &__bot {
@@ -49,5 +94,24 @@
     h2 {
       margin-bottom: 12px;
     }
+
+    & > div > :last-child {
+      margin-left: 24px;
+    }
+
+    @media (max-width: 450px) {
+      & > div {
+        flex-direction: column;
+        width: 170px;
+
+        & > :last-child {
+          margin: 24px 0 0;
+        }
+      }
+    }
   }
+}
+
+.cart-remove-padding {
+  padding-bottom: 0 !important;
 }

@@ -1,0 +1,14 @@
+.form-checkout {
+  max-width: 500px;
+  margin: 0 auto;
+
+  &__more {
+    & > :not(:last-child) {
+      margin-right: 24px;
+    }
+
+    @media (max-width: 450px) {
+      flex-direction: column;
+    }
+  }
+}

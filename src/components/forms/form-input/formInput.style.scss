@@ -1,0 +1,35 @@
+@import "../../../assets/styles/varibles.style";
+
+.form-input {
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0 24px;
+
+    border: 2px solid $color-gray-2;
+    border-radius: 8px;
+
+    ::placeholder {
+      color: $color-gray-5;
+    }
+
+    &:focus {
+      outline: none !important;
+      border: 1px solid $color-pink;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+  }
+}
