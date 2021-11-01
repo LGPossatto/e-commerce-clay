@@ -1,46 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import "./carouselItems.style.scss";
 import { ReactComponent as Arrow } from "../../../assets/icons/arrow_small.svg";
-import imgCarousel1 from "../../../assets/images/img-carousel-1.png";
-import imgCarousel2 from "../../../assets/images/img-carousel-2.png";
-import imgCarousel3 from "../../../assets/images/img-carousel-3.png";
-import imgCarousel4 from "../../../assets/images/img-carousel-4.png";
 
 import CardCarousel from "../../cards/card-carousel/CardCarousel.component";
 import Bullet from "../../bullet/Bullet.component";
-
-const data = [
-  [
-    { text: "Louis Vouiton1", href: "/", imgCarousel: imgCarousel1 },
-    { text: "Dolce&Gabbana2", href: "/", imgCarousel: imgCarousel2 },
-    { text: "Gucci3", href: "/", imgCarousel: imgCarousel3 },
-    { text: "Dries van Noten4", href: "/", imgCarousel: imgCarousel4 },
-  ],
-  [
-    { text: "Louis Vouiton5", href: "/", imgCarousel: imgCarousel1 },
-    { text: "Dolce&Gabbana6", href: "/", imgCarousel: imgCarousel2 },
-    { text: "Gucci7", href: "/", imgCarousel: imgCarousel3 },
-    { text: "Dries van Noten8", href: "/", imgCarousel: imgCarousel4 },
-  ],
-  [
-    { text: "Louis Vouiton9", href: "/", imgCarousel: imgCarousel1 },
-    { text: "Dolce&Gabbana10", href: "/", imgCarousel: imgCarousel2 },
-    { text: "Gucci11", href: "/", imgCarousel: imgCarousel3 },
-    { text: "Dries van Noten12", href: "/", imgCarousel: imgCarousel4 },
-  ],
-  [
-    { text: "Louis Vouiton13", href: "/", imgCarousel: imgCarousel1 },
-    { text: "Dolce&Gabbana14", href: "/", imgCarousel: imgCarousel2 },
-    { text: "Gucci15", href: "/", imgCarousel: imgCarousel3 },
-    { text: "Dries van Noten16", href: "/", imgCarousel: imgCarousel4 },
-  ],
-];
+import ProductsContext from "../../../context/products/Products.context";
 
 const CarouselItems = () => {
+  const { productsCarousel } = useContext(ProductsContext);
+
   const boxRef: HTMLDivElement[] = [];
   const [activeIdx, setActiveIdx] = useState<number>(0);
-  //let activeIdx = 0;
 
   const pushRef = (el: HTMLDivElement) => {
     if (!boxRef.includes(el) && el !== null) boxRef.push(el);
@@ -95,36 +66,39 @@ const CarouselItems = () => {
   };
 
   useEffect(() => {
-    //boxRef[0].classList.add("box-active");
-    boxRef[boxRef.length - 1].classList.add("carousel-box-l");
+    if (productsCarousel.length > 0) {
+      //boxRef[0].classList.add("box-active");
+      boxRef[boxRef.length - 1].classList.add("carousel-box-l");
 
-    for (let i = 1; i < boxRef.length - 1; i++) {
-      boxRef[i].classList.add("carousel-box-r");
+      for (let i = 1; i < boxRef.length - 1; i++) {
+        boxRef[i].classList.add("carousel-box-r");
+      }
     }
 
     // eslint-disable-next-line
-  }, []);
+  }, [productsCarousel]);
 
   return (
     <section className="container">
       <div className="carousel-items">
         <div className="carousel-items__top">
-          {data.map((box, i) => (
-            <div
-              key={i}
-              className="carousel-items__box flex flex-fw-w jc-se"
-              ref={(el) => pushRef(el!)}
-            >
-              {box.map((item, i) => (
-                <CardCarousel
-                  key={item.text + i}
-                  text={item.text}
-                  href={item.href}
-                  imgCarousel={item.imgCarousel}
-                ></CardCarousel>
-              ))}
-            </div>
-          ))}
+          {productsCarousel.length > 0 &&
+            productsCarousel.map((box, i) => (
+              <div
+                key={i}
+                className="carousel-items__box flex flex-fw-w jc-se"
+                ref={(el) => pushRef(el!)}
+              >
+                {box.map((product) => (
+                  <CardCarousel
+                    key={product.id}
+                    text={product.title}
+                    href={`/product/${product.id}`}
+                    imgCarousel={product.image}
+                  ></CardCarousel>
+                ))}
+              </div>
+            ))}
         </div>
         <div className="carousel-items__bot flex jc-c">
           <Bullet active={activeIdx === 0}></Bullet>

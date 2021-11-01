@@ -1,36 +1,42 @@
-import "./interest.style.scss";
-import displayImg1 from "../../assets/images/img-card-product-1.jpg";
-import displayImg2 from "../../assets/images/img-card-product-2.jpg";
-import displayImg3 from "../../assets/images/img-card-product-3.jpg";
+import { useContext } from "react";
 
+import ProductsContext from "../../context/products/Products.context";
+
+import "./interest.style.scss";
 import CardProduct from "../cards/card-product/CardProduct.component";
 
 const Interest = () => {
+  const { products } = useContext(ProductsContext);
+
   return (
     <div className="interest container">
       <h2>You may like</h2>
       <div className="interest__cards-box flex jc-sb">
-        <CardProduct
-          href="/"
-          displayImg={displayImg1}
-          title="Women's black vest Gucci"
-          desc="This is a wonderful black vest, which is well suited for parties and also great…"
-          price={715}
-        ></CardProduct>
-        <CardProduct
-          href="/"
-          displayImg={displayImg2}
-          title="Red dress Valentino"
-          desc="A very stylish and sexy dress for special occasions and for social events, impre…"
-          price={1610}
-        ></CardProduct>
-        <CardProduct
-          href="/"
-          displayImg={displayImg3}
-          title="Shiny dress Givenchy"
-          desc="A shiny dress in the style of Lady Gaga, for bright events and cool parties…"
-          price={540}
-        ></CardProduct>
+        {products.length > 0 && (
+          <>
+            <CardProduct
+              href={`/products/${products[16].id}`}
+              displayImg={products[16].image}
+              title={products[16].title}
+              desc={products[16].description}
+              price={products[16].price}
+            ></CardProduct>
+            <CardProduct
+              href={`/products/${products[17].id}`}
+              displayImg={products[17].image}
+              title={products[17].title}
+              desc={products[17].description}
+              price={products[17].price}
+            ></CardProduct>
+            <CardProduct
+              href={`/products/${products[18].id}`}
+              displayImg={products[18].image}
+              title={products[18].title}
+              desc={products[18].description}
+              price={products[18].price}
+            ></CardProduct>
+          </>
+        )}
       </div>
     </div>
   );

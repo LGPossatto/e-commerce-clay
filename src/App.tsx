@@ -1,4 +1,7 @@
+import { useContext, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
+import { ProductsContext } from "./context/products/Products.context";
 
 import Nav from "./components/navigations/nav/Nav.component";
 import NavMobile from "./components/navigations/nav-mobile/NavMobile.component";
@@ -10,6 +13,14 @@ import Cart from "./pages/cart/Cart.page";
 import NotFound from "./pages/not-found/NotFound.component";
 
 const App = () => {
+  const { fetchProducts } = useContext(ProductsContext);
+
+  useEffect(() => {
+    fetchProducts();
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <BrowserRouter>
       <Nav></Nav>
