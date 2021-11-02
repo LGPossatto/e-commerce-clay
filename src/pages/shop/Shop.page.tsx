@@ -1,68 +1,94 @@
+import { useContext, useEffect, useState } from "react";
+
+import ProductsContext from "../../context/products/Products.context";
+
 import "./shop.style.scss";
 import { ReactComponent as Arrow } from "../../assets/icons/arrow_small.svg";
-import displayImg1 from "../../assets/images/img-card-product-1.jpg";
-import displayImg2 from "../../assets/images/img-card-product-2.jpg";
-import displayImg3 from "../../assets/images/img-card-product-3.jpg";
 
 import ShopMenu from "../../components/shop-menu/ShopMenu.component";
 import CardProduct from "../../components/cards/card-product/CardProduct.component";
 
 const Shop = () => {
+  const { products, fetchProducts } = useContext(ProductsContext);
+  const [page, setPage] = useState(0);
+
+  const mountProducts = (index: number) => {
+    const productsList: JSX.Element[] = [];
+    const lastI = index * 6 + 6;
+
+    for (let i = index * 6; i < lastI; i++) {
+      if (i >= products.length) break;
+
+      productsList.push(
+        <CardProduct
+          key={products[i].title}
+          href={`product/${products[i].id}`}
+          displayImg={products[i].image}
+          title={products[i].title}
+          desc={products[i].description}
+          price={products[i].price}
+        ></CardProduct>
+      );
+    }
+
+    return productsList;
+  };
+
+  const mountPagination = (pLength: number) => {
+    const paginationList: JSX.Element[] = [];
+    const lastI = Math.ceil(pLength / 6);
+
+    for (let i = 0; i < lastI; i++) {
+      paginationList.push(
+        <h4
+          key={i}
+          onClick={() => setPage(i)}
+          className={`${page === i ? "shop-page-active" : ""}`}
+        >
+          {i + 1}
+        </h4>
+      );
+    }
+
+    return paginationList;
+  };
+
+  const movePage = (plus: boolean) => {
+    if (plus && page < Math.ceil(products.length - 6)) {
+      setPage(page + 1);
+    } else if (!plus && page > 0) {
+      setPage(page - 1);
+    }
+  };
+
+  useEffect(() => {
+    if (products.length <= 0) {
+      fetchProducts();
+    }
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="shop container">
       <ShopMenu></ShopMenu>
       <div className="shop__items">
-        <CardProduct
-          href="/"
-          displayImg={displayImg1}
-          title="Women's black vest Gucci"
-          desc="This is a wonderful black vest, which is well suited for parties and also great…"
-          price={715}
-        ></CardProduct>
-        <CardProduct
-          href="/"
-          displayImg={displayImg3}
-          title="Shiny dress Givenchy"
-          desc="A shiny dress in the style of Lady Gaga, for bright events and cool parties…"
-          price={540}
-        ></CardProduct>
-        <CardProduct
-          href="/"
-          displayImg={displayImg2}
-          title="Red dress Valentino"
-          desc="A very stylish and sexy dress for special occasions and for social events, impre…"
-          price={1610}
-        ></CardProduct>
-        <CardProduct
-          href="/"
-          displayImg={displayImg1}
-          title="Women's black vest Gucci"
-          desc="This is a wonderful black vest, which is well suited for parties and also great…"
-          price={715}
-        ></CardProduct>
-        <CardProduct
-          href="/"
-          displayImg={displayImg3}
-          title="Shiny dress Givenchy"
-          desc="A shiny dress in the style of Lady Gaga, for bright events and cool parties…"
-          price={540}
-        ></CardProduct>
-        <CardProduct
-          href="/"
-          displayImg={displayImg2}
-          title="Red dress Valentino"
-          desc="A very stylish and sexy dress for special occasions and for social events, impre…"
-          price={1610}
-        ></CardProduct>
+        {products.length > 0 && mountProducts(page)}
       </div>
       <div className="shop__pages flex jc-sb ai-c">
-        <Arrow></Arrow>
+        <Arrow
+          onClick={() => {
+            movePage(false);
+          }}
+        ></Arrow>
         <div className="flex jc-sb ai-c">
-          <h4 className="">1</h4>
-          <h4 className="">2</h4>
-          <h4 className="">3</h4>
+          {products.length > 0 && mountPagination(products.length)}
         </div>
-        <Arrow></Arrow>
+        <Arrow
+          onClick={() => {
+            movePage(true);
+          }}
+        ></Arrow>
       </div>
     </div>
   );

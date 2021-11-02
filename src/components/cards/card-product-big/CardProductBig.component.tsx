@@ -1,37 +1,50 @@
 import { FC } from "react";
 
+import { IProduct } from "../../../context/products/Products.state";
+
 import "./cardProductBig.style.scss";
+import imgCardCarousel1 from "../../../assets/images/img-card-carousel-1.jpg";
+
 import Pill from "../../pill/Pill.component";
 import BtnCta from "../../buttons/btn-cta/BtnCta.component";
 import FormRadio from "../../forms/form-radio/FormRadio.component";
 import FormRadioColors from "../../forms/form-radio-colors/FormRadioColors.component";
 import CarouselCardImg from "../../carousel/carousel-card-img/CarouselCardImg.component";
 
-interface props {}
+interface props {
+  product: IProduct;
+}
 
-const CardProduct: FC<props> = () => {
+const CardProduct: FC<props> = ({ product }) => {
+  const imgList = [
+    product.image,
+    imgCardCarousel1,
+    product.image,
+    imgCardCarousel1,
+    product.image,
+    imgCardCarousel1,
+    product.image,
+    imgCardCarousel1,
+  ];
+
   return (
     <div className="card-product-big flex flex-fw-w jc-sb">
       <div className="card-product-big__img-box">
-        <CarouselCardImg></CarouselCardImg>
+        <CarouselCardImg imgList={imgList}></CarouselCardImg>
       </div>
       <div className="card-product-big__info">
         <Pill productPill text="Popular"></Pill>
-        <h1 className="">Black Valentino dress with tulle</h1>
-        <div>Stars</div>
+        <h1 className="">{product.title}</h1>
+        <div>{product.rating.rate}&#9733;</div>
         <h4 className="">Info</h4>
-        <p className="font-subtitle-regular-gray">
-          Dress with tulle and collar Peter Pan from REDValentino (Red
-          Valentino). Peter Pan collar, tulle panels, sleeveless model,
-          concealed back zipper and pleated skirt. Black colour.
-        </p>
+        <p className="font-subtitle-regular-gray">{product.description}</p>
         <FormRadio text="Size" options={["L", "M", "S"]}></FormRadio>
         <FormRadioColors
           text="Colors"
           options={["1B2437", "127681", "32E0C4"]}
         ></FormRadioColors>
         <div className="card-product-big__cta-box flex jc-sb ai-c">
-          <h2>$ 1315</h2>
+          <h2>$ {product.price}</h2>
           <div className="flex jc-fe ai-c">
             <BtnCta text="Shop Now" onClick={() => {}}></BtnCta>
             <BtnCta text="Add to Cart" pinkBorder onClick={() => {}}></BtnCta>

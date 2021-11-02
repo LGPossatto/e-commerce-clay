@@ -28,7 +28,7 @@ const App = () => {
       <Switch>
         <Route exact path="/Home" component={Home}></Route>
         <Route exact path="/Shop" component={Shop}></Route>
-        <Route exact path="/Product" component={Product}></Route>
+        <Route exact path="/Product/:id" component={Product}></Route>
         <Route exact path="/Cart" component={Cart}></Route>
         <Redirect exact path="/" to="/Home"></Redirect>
         <Route component={NotFound}></Route>

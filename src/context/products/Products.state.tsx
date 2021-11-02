@@ -3,7 +3,7 @@ import ProductsContext from "./Products.context";
 import { useReducer } from "react";
 import productsReducer from "./products.reducer";
 
-import { FETCH_PROJECTS } from "../types";
+import { FETCH_PROJECTS, FETCH_PROJECT } from "../types";
 import { data } from "../../data";
 
 export interface IProduct {
@@ -18,18 +18,24 @@ export interface IProduct {
 
 interface IProductsState {
   products: IProduct[];
+  product: IProduct | null;
   productsCarousel: IProduct[];
 }
 
 const ProductsState = (props: any) => {
-  const inicialState: IProductsState = { products: [], productsCarousel: [] };
+  const inicialState: IProductsState = {
+    products: [],
+    product: null,
+    productsCarousel: [],
+  };
 
+  //@ts-ignore
   const [state, dispatch] = useReducer(productsReducer, inicialState);
 
   const fetchProducts = async () => {
     try {
       //const data = await fetch("https://fakestoreapi.com/products");
-      //const res = data.json();
+      //const res = await data.json();
 
       const res = data;
 
@@ -43,9 +49,25 @@ const ProductsState = (props: any) => {
         }
       })();
 
+      //@ts-ignore
       dispatch({
         type: FETCH_PROJECTS,
         payload: { products: res, productsCarousel },
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const fetchProduct = async (id: string) => {
+    try {
+      const data = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const res = await data.json();
+
+      //@ts-ignore
+      dispatch({
+        type: FETCH_PROJECT,
+        payload: res,
       });
     } catch (err) {
       console.error(err);
@@ -56,8 +78,10 @@ const ProductsState = (props: any) => {
     <ProductsContext.Provider
       value={{
         products: state.products,
+        product: state.product,
         productsCarousel: state.productsCarousel,
         fetchProducts,
+        fetchProduct,
       }}
     >
       {props.children}
