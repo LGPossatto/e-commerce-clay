@@ -1,7 +1,8 @@
 import { FETCH_PROJECT, FETCH_PROJECTS } from "../types";
+import { IProductsState } from "./Products.state";
 
 const productsReducer = (
-  state = { products: [], product: null, productsCarousel: [] },
+  state: IProductsState = { products: [], product: null, productsCarousel: [] },
   action: { type: string; payload: any }
 ) => {
   switch (action.type) {

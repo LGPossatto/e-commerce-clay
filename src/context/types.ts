@@ -1,2 +1,6 @@
+// PROJECTS
 export const FETCH_PROJECTS = "FETCH_PROJECTS";
 export const FETCH_PROJECT = "FETCH_PROJECT";
+
+// CART
+export const ADD_TO_CART = "ADD_TO_CART";

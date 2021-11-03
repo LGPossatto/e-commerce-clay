@@ -16,7 +16,7 @@ export interface IProduct {
   rating: { rate: number; count: number };
 }
 
-interface IProductsState {
+export interface IProductsState {
   products: IProduct[];
   product: IProduct | null;
   productsCarousel: IProduct[];
@@ -29,7 +29,6 @@ const ProductsState = (props: any) => {
     productsCarousel: [],
   };
 
-  //@ts-ignore
   const [state, dispatch] = useReducer(productsReducer, inicialState);
 
   const fetchProducts = async () => {
@@ -49,7 +48,6 @@ const ProductsState = (props: any) => {
         }
       })();
 
-      //@ts-ignore
       dispatch({
         type: FETCH_PROJECTS,
         payload: { products: res, productsCarousel },
@@ -64,7 +62,6 @@ const ProductsState = (props: any) => {
       const data = await fetch(`https://fakestoreapi.com/products/${id}`);
       const res = await data.json();
 
-      //@ts-ignore
       dispatch({
         type: FETCH_PROJECT,
         payload: res,

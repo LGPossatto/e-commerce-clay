@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 import "./nav.style.scss";
 import { ReactComponent as Insta } from "../../../assets/icons/instagram_icn _1.svg";
@@ -18,6 +19,11 @@ import DropdownShop from "../../dropdown/dropdown-shop/DropdownShop.component";
 
 const Nav = () => {
   const [dropShop, setDropShop] = useState(false);
+  const history = useHistory();
+
+  const goToCart = () => {
+    history.push("/cart");
+  };
 
   return (
     <nav className="nav hide-on-mobile">
@@ -33,7 +39,7 @@ const Nav = () => {
         <div className="nav__opt flex">
           <BtnModal SvgComponent={Search}></BtnModal>
           <BtnModal SvgComponent={User}></BtnModal>
-          <BtnModal SvgComponent={Cart}></BtnModal>
+          <BtnModal SvgComponent={Cart} onclick={goToCart}></BtnModal>
         </div>
       </section>
       <section className="nav-bot container flex ai-c jc-c">

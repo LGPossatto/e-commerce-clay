@@ -1,4 +1,6 @@
-import { FC } from "react";
+import { FC, useContext, useState } from "react";
+
+import CartContext from "../../../context/cart/Cart.context";
 
 import { IProduct } from "../../../context/products/Products.state";
 
@@ -16,6 +18,11 @@ interface props {
 }
 
 const CardProduct: FC<props> = ({ product }) => {
+  const { addToCart } = useContext(CartContext);
+  const [size, setSize] = useState<string>("null");
+  const [color, setColor] = useState<string>("null");
+
+  // helper const
   const imgList = [
     product.image,
     imgCardCarousel1,
@@ -26,6 +33,10 @@ const CardProduct: FC<props> = ({ product }) => {
     product.image,
     imgCardCarousel1,
   ];
+
+  const addProduct = () => {
+    addToCart({ ...product, size, color, quantity: 1 });
+  };
 
   return (
     <div className="card-product-big flex flex-fw-w jc-sb">
@@ -38,16 +49,27 @@ const CardProduct: FC<props> = ({ product }) => {
         <div>{product.rating.rate}&#9733;</div>
         <h4 className="">Info</h4>
         <p className="font-subtitle-regular-gray">{product.description}</p>
-        <FormRadio text="Size" options={["L", "M", "S"]}></FormRadio>
+        <FormRadio
+          text="Size"
+          options={["L", "M", "S"]}
+          setSize={setSize}
+        ></FormRadio>
         <FormRadioColors
           text="Colors"
           options={["1B2437", "127681", "32E0C4"]}
+          setColor={setColor}
         ></FormRadioColors>
         <div className="card-product-big__cta-box flex jc-sb ai-c">
           <h2>$ {product.price}</h2>
           <div className="flex jc-fe ai-c">
             <BtnCta text="Shop Now" onClick={() => {}}></BtnCta>
-            <BtnCta text="Add to Cart" pinkBorder onClick={() => {}}></BtnCta>
+            <BtnCta
+              text="Add to Cart"
+              pinkBorder
+              onClick={() => {
+                addProduct();
+              }}
+            ></BtnCta>
           </div>
         </div>
       </div>

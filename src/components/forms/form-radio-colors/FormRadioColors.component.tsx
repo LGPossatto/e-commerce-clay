@@ -4,9 +4,10 @@ import "./formRadioColors.style.scss";
 interface props {
   text: string;
   options: string[];
+  setColor?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const FormRadio: FC<props> = ({ text, options }) => {
+const FormRadio: FC<props> = ({ text, options, setColor }) => {
   return (
     <div className="form-radio-colors">
       <p className="font-subtitle-regular">{text}</p>
@@ -17,7 +18,15 @@ const FormRadio: FC<props> = ({ text, options }) => {
           };
 
           return (
-            <div key={i} className="radio-box flex jc-c ai-c">
+            <div
+              key={i}
+              className="radio-box flex jc-c ai-c"
+              onClick={() => {
+                if (setColor) {
+                  setColor(option);
+                }
+              }}
+            >
               <input
                 type="radio"
                 id={option}
