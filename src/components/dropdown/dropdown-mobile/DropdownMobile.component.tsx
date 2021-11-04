@@ -27,14 +27,15 @@ const DropdownMobile: FC<props> = ({ onLinkClick }) => {
           <Logo></Logo>
           <h3>Clay Shop</h3>
         </Link>
-        <LinkMenuMob text="Home"></LinkMenuMob>
+        <LinkMenuMob text="Home" onclick={onLinkClick}></LinkMenuMob>
         <LinkMenuMobDrop
           text="Shop"
           slide={true}
+          onclick={onLinkClick}
           setSlide={() => setSlideShop(true)}
         ></LinkMenuMobDrop>
-        <LinkMenuMob text="Blog"></LinkMenuMob>
-        <LinkMenuMob text="Contact"></LinkMenuMob>
+        <LinkMenuMob text="Blog" onclick={onLinkClick}></LinkMenuMob>
+        <LinkMenuMob text="Contact" onclick={onLinkClick}></LinkMenuMob>
         <div className="dropdown-mobile__soc flex jc-c">
           <LinkIcon href="/" SvgComponent={Insta} circle></LinkIcon>
           <LinkIcon href="/" SvgComponent={Face} circle></LinkIcon>

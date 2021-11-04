@@ -1,6 +1,10 @@
 @import "../../assets/styles/varibles.style";
 
 .cart-item {
+  display: grid;
+  grid-template-columns: 55% 1fr 1fr 5%;
+  gap: 12px;
+
   padding: 24px;
 
   svg {
@@ -15,14 +19,29 @@
   &__desc {
     img {
       object-fit: contain;
+
+      min-width: 112px;
       width: 112px;
+      max-width: 112px;
+
+      min-height: 112px;
       height: 112px;
+      max-height: 112px;
+
+      padding: 8px;
 
       border: 2px solid $color-gray-2;
       border-radius: 8px;
     }
 
     h4 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+
       margin-left: 24px;
     }
   }
@@ -30,7 +49,6 @@
   &__btns {
     svg:first-child {
       margin-right: 12px;
-      transform: rotate(180deg);
     }
     svg:last-child {
       margin-left: 12px;
@@ -39,9 +57,11 @@
   }
 
   @media (max-width: 650px) {
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 5%;
 
     &__desc {
+      grid-column: span 3;
+
       width: 100%;
       margin-bottom: 12px;
     }

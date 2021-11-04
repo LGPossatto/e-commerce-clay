@@ -8,12 +8,21 @@ interface props {
   text: string;
   slide: boolean;
   setSlide: Function;
+  onclick?: Function;
 }
 
-const LinkMenuMobDrop: FC<props> = ({ text, slide, setSlide }) => {
+const LinkMenuMobDrop: FC<props> = ({ text, slide, setSlide, onclick }) => {
   return (
     <div className="link-menu-mob-drop flex ai-c">
-      <Link to={`/${text}`} className="">
+      <Link
+        to={`/${text}`}
+        className=""
+        onClick={() => {
+          if (onclick) {
+            onclick();
+          }
+        }}
+      >
         <h2>{text}</h2>
       </Link>
       <Arrow

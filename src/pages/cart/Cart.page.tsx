@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router";
+
+import CartContext from "../../context/cart/Cart.context";
+
+import { roundDecimals } from "../../assets/scripts/utils";
 
 import "./cart.style.scss";
 import { ReactComponent as SVG } from "../../assets/icons/check.svg";
@@ -10,6 +14,8 @@ import FormCheckout from "../../components/forms/form-checkout/FormCheckout.comp
 import FormShipping from "../../components/forms/form-shipping/FormShipping.component";
 
 const Cart = () => {
+  const { products, addToCart, removeOneFromCart, removeAllFromCart } =
+    useContext(CartContext);
   const [progress, setProgress] = useState<number>(0);
   const history = useHistory();
 
@@ -40,9 +46,24 @@ const Cart = () => {
         </div>
         {progress === 0 && (
           <div className="cart__items">
-            <CartItem></CartItem>
-            <CartItem></CartItem>
-            <CartItem></CartItem>
+            {products.map((product, i) => (
+              <CartItem
+                key={i}
+                image={product.image}
+                title={product.title}
+                quantity={product.quantity}
+                price={product.price}
+                addOne={() => {
+                  addToCart(product);
+                }}
+                removeOne={() => {
+                  removeOneFromCart(product);
+                }}
+                removeAll={() => {
+                  removeAllFromCart(product);
+                }}
+              ></CartItem>
+            ))}
           </div>
         )}
         {progress === 1 && (
@@ -72,7 +93,14 @@ const Cart = () => {
           </div>
         )}
         <div className="cart__bot flex flex-fd-c ai-fe">
-          {progress !== 3 && <h2>Total $618</h2>}
+          {progress !== 3 && (
+            <h2>
+              Total $
+              {roundDecimals(
+                products.reduce((prev, el) => prev + el.price * el.quantity, 0)
+              )}
+            </h2>
+          )}
           <div className="flex ai-c jc-fe">
             {progress !== 3 && progress !== 0 && (
               <BtnCta

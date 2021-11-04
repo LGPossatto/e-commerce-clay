@@ -5,11 +5,20 @@ import "./linkMenuMob.style.scss";
 
 interface props {
   text: string;
+  onclick?: Function;
 }
 
-const LinkMenuMob: FC<props> = ({ text }) => {
+const LinkMenuMob: FC<props> = ({ text, onclick }) => {
   return (
-    <Link to={`/${text}`} className="link-menu-mob">
+    <Link
+      to={`/${text}`}
+      className="link-menu-mob"
+      onClick={() => {
+        if (onclick) {
+          onclick();
+        }
+      }}
+    >
       <h2>{text}</h2>
     </Link>
   );

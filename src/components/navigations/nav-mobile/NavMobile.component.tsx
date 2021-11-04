@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import "./navMobile.style.scss";
 import { ReactComponent as Logo } from "../../../assets/icons/logo.svg";
@@ -13,6 +13,11 @@ import DropdownMobile from "../../dropdown/dropdown-mobile/DropdownMobile.compon
 
 const NavMobile = () => {
   const [dropMob, setDropMob] = useState(false);
+  const history = useHistory();
+
+  const goToCart = () => {
+    history.push("/cart");
+  };
 
   return (
     <nav className="nav-mobile hide-on-desktop">
@@ -29,7 +34,7 @@ const NavMobile = () => {
         <div className="nav-mobile__opt flex">
           <BtnModal SvgComponent={Search}></BtnModal>
           <BtnModal SvgComponent={User}></BtnModal>
-          <BtnModal SvgComponent={Cart}></BtnModal>
+          <BtnModal SvgComponent={Cart} onclick={goToCart}></BtnModal>
         </div>
       </section>
       <div className={`nav-mobile__drop ${dropMob ? "drop-mob-active" : ""}`}>
